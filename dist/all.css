@@ -1,0 +1,18 @@
+body {
+	background: rgba(150,223,230,1);
+	background: -moz-radial-gradient(center, ellipse cover, rgba(150,223,230,1) 0%, rgba(95,206,216,1) 39%, rgba(85,177,184,1) 74%, rgba(77,155,161,1) 100%);
+	background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(150,223,230,1)), color-stop(39%, rgba(95,206,216,1)), color-stop(74%, rgba(85,177,184,1)), color-stop(100%, rgba(77,155,161,1)));
+	background: -webkit-radial-gradient(center, ellipse cover, rgba(150,223,230,1) 0%, rgba(95,206,216,1) 39%, rgba(85,177,184,1) 74%, rgba(77,155,161,1) 100%);
+	background: -o-radial-gradient(center, ellipse cover, rgba(150,223,230,1) 0%, rgba(95,206,216,1) 39%, rgba(85,177,184,1) 74%, rgba(77,155,161,1) 100%);
+	background: -ms-radial-gradient(center, ellipse cover, rgba(150,223,230,1) 0%, rgba(95,206,216,1) 39%, rgba(85,177,184,1) 74%, rgba(77,155,161,1) 100%);
+	background: radial-gradient(ellipse at center, rgba(150,223,230,1) 0%, rgba(95,206,216,1) 39%, rgba(85,177,184,1) 74%, rgba(77,155,161,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#96dfe6', endColorstr='#4d9ba1', GradientType=1 );
+}
+
+
+#myCanvas {
+	position: relative;
+	display: block;
+	margin: 0 auto;
+
+}
