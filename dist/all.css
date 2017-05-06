@@ -11,8 +11,6 @@ body {
 
 
 #myCanvas {
-	position: relative;
 	display: block;
 	margin: 0 auto;
-
 }
