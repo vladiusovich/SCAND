@@ -1,13 +1,20 @@
+var path = require('path');
 module.exports = {
-    entry: './app/app.js',
+    entry: {
+      arcBorder: path.join(__dirname, 'app', 'ArcBorder.js'),
+      particle: path.join(__dirname, 'app', 'Particle.js'),
+      vector: path.join(__dirname, 'app', 'Vector.js'),
+      app: path.join(__dirname, 'app', 'app.js')
+    },
     output: {
-        path: '/WebProjects/SCAND/dist/js',
-        filename: 'app.bandle.js'
+        path: path.join(__dirname, 'dist/js'),
+        filename: '[name].bandle.js'
     },
     module: {
         loaders: [{
-            exclude: /node_modules/,
-            loader: 'babel-loader'
+          test: /\.js$/,
+          loader: 'babel-loader',
+          include: path.join(__dirname, 'app')
         }]
     }
 }

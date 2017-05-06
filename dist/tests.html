@@ -2,7 +2,6 @@
 
 <head>
   <meta charset="utf-8">
-  <script src="js/app.bandle.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mocha/2.1.0/mocha.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/mocha/2.1.0/mocha.js"></script>
   <script>
@@ -17,7 +16,7 @@
 
 <body>
 
-  <!-- <script>
+  <script>
   class Vector {
     constructor(x, y) {
       this.x = x || 0;
@@ -127,19 +126,11 @@
       }
   }
 
-
   class ArcBorder extends Vector {
   	constructor(x, y, r){
   		super(x, y);
   		this.radius = r || 100;
   	}
-
-  	// getPoint(angle){
-    //   return {
-  	// 		x: this.x + Math.cos(angle) * this.radius,
-  	// 		y: this.y + Math.sin(angle) * this.radius
-  	// 	}
-  	// }
 
   	getStartPosition() {
       return {
@@ -177,19 +168,11 @@
     	ctx.strokeStyle = '#003300';
   		ctx.stroke();
   	}
-  } -->
-
-
+  }
 
   </script>
 
   <script type="text/javascript">
-
-  var canvas = document.getElementById("myCanvas");
-
-  var ctx = canvas.getContext("2d");
-  canvas.width = 800;
-  canvas.height = 800;
 
 
     describe("тесты для класса Vector", function() {
@@ -256,7 +239,6 @@
       it("функция distanceTo(). Возвращает расстояние от исходного вектора до другого. Исходный вектор x = 25, y = 85. Второй вектор: x = 100, y = 50. Ожидается: 82.76472678623425", function() {
         var vectorA = new Vector(25, 85);
         var vectorB = new Vector(100, 50);
-        console.log("distanceTo ", vectorA.distanceTo(vectorB));
         assert.equal(vectorA.distanceTo(vectorB) , 82.76472678623425);
       });
 
@@ -303,13 +285,9 @@
 
   </script>
 
-  <!-- в этом скрипте находятся спеки -->
-  <script src="js/tests.js"></script>
 
-  <!-- в элементе с id="mocha" будут результаты тестов -->
   <div id="mocha"></div>
 
-  <!-- запустить тесты! -->
   <script>
     mocha.run();
   </script>

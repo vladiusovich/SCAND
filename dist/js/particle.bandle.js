@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ 	return __webpack_require__(__webpack_require__.s = 2);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -159,91 +159,7 @@ var Vector = function () {
 exports.default = Vector;
 
 /***/ }),
-/* 1 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _Vector2 = __webpack_require__(0);
-
-var _Vector3 = _interopRequireDefault(_Vector2);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var ArcBorder = function (_Vector) {
-	_inherits(ArcBorder, _Vector);
-
-	function ArcBorder(x, y, r) {
-		_classCallCheck(this, ArcBorder);
-
-		var _this = _possibleConstructorReturn(this, (ArcBorder.__proto__ || Object.getPrototypeOf(ArcBorder)).call(this, x, y));
-
-		_this.radius = r || 100;
-		return _this;
-	}
-
-	_createClass(ArcBorder, [{
-		key: 'getStartPosition',
-		value: function getStartPosition() {
-			return {
-				x: this.x + Math.cos(0) * this.radius,
-				y: this.y + Math.sin(0) * this.radius
-			};
-		}
-	}, {
-		key: 'getStartVector',
-		value: function getStartVector() {
-			return new _Vector3.default(this.getStartPosition().x - this.x, this.getStartPosition().y - this.y);
-		}
-	}, {
-		key: 'getBallvector',
-		value: function getBallvector(b) {
-			return new _Vector3.default(b.x - this.x, b.y - this.y);
-		}
-	}, {
-		key: 'makeBorderFor',
-		value: function makeBorderFor(v) {
-			var arcV = this.getStartVector();
-			var ballV = this.getBallvector(v);
-
-			var arcLength = Math.floor(arcV.length());
-			var ballLength = Math.floor(ballV.length()) + v.radius * 5;
-			if (ballLength > arcLength) {
-				v.set(v._latest);
-			}
-		}
-	}, {
-		key: '_draw',
-		value: function _draw(ctx) {
-			ctx.beginPath();
-			ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI, false);
-			ctx.fillStyle = '#dc9f91';
-			ctx.fill();
-			ctx.lineWidth = 5;
-			ctx.strokeStyle = '#003300';
-			ctx.stroke();
-		}
-	}]);
-
-	return ArcBorder;
-}(_Vector3.default);
-
-exports.default = ArcBorder;
-
-/***/ }),
+/* 1 */,
 /* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -342,68 +258,6 @@ var Particle = function (_Vector) {
 }(_Vector3.default);
 
 exports.default = Particle;
-
-/***/ }),
-/* 3 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _Vector = __webpack_require__(0);
-
-var _Vector2 = _interopRequireDefault(_Vector);
-
-var _Particle = __webpack_require__(2);
-
-var _Particle2 = _interopRequireDefault(_Particle);
-
-var _ArcBorder = __webpack_require__(1);
-
-var _ArcBorder2 = _interopRequireDefault(_ArcBorder);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-//Events
-function mouseMoveHandler(e) {
-  var relativeX = e.clientX - canvas.offsetLeft;
-  var relativeY = e.clientY - canvas.offsetTop;
-  mouseVector = new _Particle2.default(relativeX, relativeY);
-}
-
-//Init
-var canvas = document.getElementById("myCanvas");
-var ctx = canvas.getContext("2d");
-canvas.width = 800;
-canvas.height = 800;
-
-var mouseVector = void 0;
-
-var ball = new _Particle2.default(canvas.width / 2, canvas.height / 2, 5);
-var arc = new _ArcBorder2.default(canvas.width / 2, canvas.height / 2, canvas.width / 2.5);
-
-//Events Listener
-canvas.addEventListener("mousemove", mouseMoveHandler, false);
-
-function draw() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-  if (typeof canvas == "undefined") {
-    return;
-  }
-
-  if (typeof mouseVector !== "undefined") {
-    ball.watchTo(mouseVector);
-  }
-
-  arc.makeBorderFor(ball);
-
-  arc._draw(ctx);
-  ball._draw(ctx);
-  ball.update();
-}
-
-setInterval(draw, 10);
 
 /***/ })
 /******/ ]);
